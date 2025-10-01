@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get 20% Off – Deluxe Photo</title>
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#ffffff; --accent:#111827; --primary:#111827; --btn:#111827;
+      --text:#111827; --muted:#4b5563; --ok:#0ea5e9; --focus:#0ea5e9;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:linear-gradient(135deg,#0f172a,#111827);
+      color:#111827;
+    }
+    .container{
+      max-width:980px; margin:0 auto; padding:24px;
+    }
+    .card{
+      background:var(--card); border-radius:24px; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,.25);
+      margin:28px auto;
+    }
+    h1{font-size:clamp(28px,5vw,40px); margin:0 0 8px 0; color:var(--primary);}
+    .sub{font-size:clamp(14px,2.8vw,18px); color:var(--muted); margin-bottom:22px}
+    .badge{
+      display:inline-block; background:#eef2ff; color:#3730a3; padding:6px 12px; border-radius:999px;
+      font-weight:600; margin-bottom:12px; letter-spacing:.2px;
+    }
+    form{
+      display:grid; gap:14px; margin-top:8px;
+    }
+    label{font-weight:600; font-size:14px; color:#111827;}
+    input[type="text"], input[type="email"]{
+      width:100%; padding:14px 16px; border:1px solid #e5e7eb; border-radius:12px; font-size:16px;
+      outline:none; transition:border .2s, box-shadow .2s;
+    }
+    input:focus{border-color:var(--focus); box-shadow:0 0 0 4px rgba(14,165,233,.15)}
+    .checkbox-row{display:flex; gap:10px; align-items:flex-start; margin-top:6px}
+    .checkbox-row input{margin-top:3px}
+    .terms-toggle{
+      display:inline; text-decoration:underline; color:#0ea5e9; cursor:pointer;
+    }
+    .terms-box{
+      display:none; margin-top:10px; padding:12px; border:1px solid #e5e7eb; border-radius:12px; max-height:240px; overflow:auto;
+      background:#fafafa; font-size:14px; color:#111827; white-space:pre-wrap;
+    }
+    .btn{
+      appearance:none; border:none; background:var(--btn); color:#fff; padding:14px 18px; border-radius:12px;
+      font-weight:700; font-size:16px; cursor:pointer; transition:transform .05s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .footnote{font-size:12px; color:#6b7280; margin-top:6px}
+    .frame{
+      display:flex; flex-direction:column; gap:8px; padding:16px; border:1px dashed #e5e7eb; border-radius:16px; background:#f8fafc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <span class="badge">Limited‑time offer</span>
+      <h1>Get 20% Off One Photo in a Custom Dolby Theatre Frame</h1>
+      <p class="sub">Leave your email to claim your offer.</p>
+
+      <div class="frame">
+        <form id="offerForm" method="POST" action="https://formsubmit.co/REPLACE_WITH_YOUR_EMAIL">
+          <!-- FormSubmit config -->
+          <!-- Replace with your email above. After hosting, set this to your real email (e.g., info@deluxephoto.com). -->
+          <!-- Redirect to thank-you page after submit: update the absolute URL if needed -->
+          <input type="hidden" name="_next" value="https://REPLACE_WITH_YOUR_DOMAIN/thank-you.html">
+          <input type="hidden" name="_subject" value="New 20% Off Claim – Deluxe Photo">
+          <input type="hidden" name="_captcha" value="false">
+
+          <label for="fullName">Full name*</label>
+          <input id="fullName" name="Full Name" type="text" required placeholder="e.g., Jane Smith">
+
+          <label for="email">Email*</label>
+          <input id="email" name="Email" type="email" required placeholder="name@example.com">
+
+          <div class="checkbox-row">
+            <input id="agree" name="Agree to Terms" type="checkbox" required>
+            <label for="agree">
+              I agree to the <span id="toggleTerms" class="terms-toggle">Terms &amp; Privacy Policy</span>.
+            </label>
+          </div>
+
+          <div id="termsBox" class="terms-box">
+Data Collection and Use
+By submitting your personal information (such as your name and email address), you consent to our collection, storage, and processing of this data for the purposes of:
+• Sending you marketing communications, newsletters, and promotional offers.
+• Informing you about updates, events, and special deals related to our services.
+
+Legal Basis (GDPR)
+We process your personal data based on your explicit consent, which you can withdraw at any time.
+
+Your Rights
+Depending on your location, you may have the right to:
+• Access, correct, or delete your personal data.
+• Restrict or object to the processing of your personal data.
+• Request a copy of your data in a portable format.
+• Withdraw your consent to receive marketing communications at any time (by clicking the “unsubscribe” link in our emails or contacting us directly).
+
+Data Sharing
+We do not sell or rent your personal information to third parties. Data may be shared only with service providers who assist us in email delivery or marketing automation, and only under strict confidentiality agreements.
+
+Data Retention
+We retain your data only for as long as it is necessary to provide you with our services or as required by applicable laws.
+
+Your Privacy Under CCPA
+If you are a California resident, you have the right to request disclosure of the categories and specific pieces of personal information we collect, the right to request deletion of your data, and the right to opt out of the sale of personal information (we do not sell personal data).
+
+Contact Information
+If you have questions about how we handle your personal data or wish to exercise your rights, please contact us at info@deluxephoto.com.
+          </div>
+
+          <button class="btn" type="submit" id="submitBtn">Claim My Discount</button>
+          <div class="footnote">We’ll never sell or rent your data.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Toggle terms visibility when clicking the text or checking the box
+  const toggle = document.getElementById('toggleTerms');
+  const box = document.getElementById('termsBox');
+  const agree = document.getElementById('agree');
+  const form = document.getElementById('offerForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  toggle.addEventListener('click', () => {
+    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    if (box.style.display === 'block') {
+      box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  });
+
+  // Simple client-side validation to ensure checkbox is ticked
+  form.addEventListener('submit', (e) => {
+    if (!agree.checked) {
+      e.preventDefault();
+      alert('Please agree to the Terms & Privacy Policy to continue.');
+    }
+  });
+</script>
+</body>
+</html>
